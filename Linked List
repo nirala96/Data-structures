@@ -1,0 +1,72 @@
+//1. Insertion of a node in Linked List (On the basis of some constraints)
+//by arunnoday kumar
+
+ class Main
+{
+    class Node{
+        int data;
+        Node next;
+        Node(int d){data=d;next=null;}
+    }
+    
+    
+    Node NewNode(int data){
+        Node x=new Node(data);
+        return x;
+        
+    }
+    
+    
+    Node head;
+    
+    
+    void PrintList(){
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data);
+            temp=temp.next;
+        }
+    }
+    
+    
+    
+    void SortedInsert(Node naya)
+    {
+        Node curr;
+        if(head==null||naya.data<=head.data)
+        {
+            naya.next=head;
+            head=naya;
+        }
+        else
+        {
+            curr=head;
+        while(curr.next!=null&&curr.data<naya.data)
+        {
+            curr=curr.next;
+            
+            naya.next=curr.next;
+            curr.next=naya;
+        }
+    }}
+    
+    
+ public static void main(String args[]){
+     Main llist=new Main();
+     Node naya;
+     naya=llist.NewNode(2);
+     llist.SortedInsert(naya);
+     naya=llist.NewNode(6);
+     llist.SortedInsert(naya);
+     naya=llist.NewNode(10);
+     llist.SortedInsert(naya);
+     naya=llist.NewNode(6);
+     llist.SortedInsert(naya);
+     llist.PrintList();
+     
+     
+     
+     
+ }   
+}
