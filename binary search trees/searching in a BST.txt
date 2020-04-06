@@ -1,0 +1,66 @@
+import java.util.*;
+public class Nirala{
+    static class Node{
+        int data;
+        Node left,right;
+        Node(int d)
+        {
+            data=d;
+            left=null;
+            right=null;
+
+        }
+    }
+    static boolean iterativeSearch(Node root,int data)
+    {
+        while(root!=null)
+        {
+            if(data>root.data)
+            {
+                root=root.right;
+            }
+            else if(data<root.data)
+            {
+                root=root.left;
+            }
+            else
+            return true;
+        }
+        return false;
+        
+    }
+    static Node insert(Node root,int data)
+    {
+        if(root==null)
+        {
+            Node node=new Node(data);
+            return node;
+        }
+        else if(data<root.data)
+        {
+            root.left=insert(root.left,data);
+        }
+        else if(data>root.data)
+        {
+            root.right=insert(root.right,data);
+        }
+        return root;
+    }
+    public static void main(String[] args)
+    {
+        Node root=null;
+        root=insert(root,50);
+        insert(root,40);
+        insert(root,60);
+        insert(root,80);
+        insert(root,520);
+        insert(root,52);
+        insert(root,54);
+        insert(root,500);
+        if(iterativeSearch(root,520))
+        System.out.println("YES");
+        else
+                System.out.println("NO");
+
+    }
+}
